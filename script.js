@@ -1,4 +1,4 @@
-onst listaLi = document.querySelectorAll('.box .itens');
+const listaLi = document.querySelectorAll('.box .itens');
 const mensagem = document.querySelector('.vencedor');
 let jogador = "X";
 let finalizar = false;
