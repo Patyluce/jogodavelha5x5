@@ -1,4 +1,4 @@
-const listaLi = document.querySelectorAll('.box .itens');
+onst listaLi = document.querySelectorAll('.box .itens');
 const mensagem = document.querySelector('.vencedor');
 let jogador = "X";
 let finalizar = false;
@@ -31,7 +31,7 @@ listaLi.forEach((li, i) => {
       mensagem.innerHTML = 'Vez do jogador  <span style="color: blue;">O</span>'
       mensagem.style.color= "black"
     }
-    if (jogadas === 9) {
+    if (jogadas === 15) {
       mensagem.innerHTML = "Empate!";
       mensagem.style.color= "black"
     }
@@ -52,11 +52,11 @@ bt.addEventListener("click", function () {
 });
 
 let blocos = [
-  ['', '', ''],
-  ['', '', ''],
-  ['', '', ''],
-  ['', '', ''],
-  ['', '', '']
+  ['', '', '' , '' , '' ],
+  ['', '', '' , '' , '' ],
+  ['', '', '' , '' , '' ],
+  ['', '', '' , '' , '' ],
+  ['', '', '' , '' , '' ]
 ];
 
 function atualizarBlocos(i, valor) {
@@ -66,6 +66,7 @@ function atualizarBlocos(i, valor) {
 }
 
 //verificar o vencedor da partida
+//ajustar
 function vencedor(){
 
   const combinacaoes = [
@@ -77,11 +78,11 @@ function vencedor(){
     [[0, 1], [1, 1], [2, 1]],
     [[0, 2], [1, 2], [2, 2]],
     [[0, 0], [1, 1], [2, 2]],
-    [[0, 2], [1, 1], [2, 0]],
+    [[0, 2], [1, 1], [2, 0]]
   ]
   
   for ( let comb of combinacaoes){
-    const [a,b,c] = comb
+    const [a,b,c , d , e] = comb
 
     if (
       blocos[a[0]][a[1]] !== '' &&
@@ -106,6 +107,7 @@ function vencedor(){
     }
   }
   }
+
 
 
 
