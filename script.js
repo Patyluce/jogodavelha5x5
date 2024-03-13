@@ -19,6 +19,7 @@ listaLi.forEach((li, i) => {
     li.style.backgroundColor = "rgb(143, 247, 143)";
     atualizarBlocos(i, jogador);
     jogador = jogador === "X" ? "O" : "X";
+    
     vencedor();
     jogadas++
     if(jogador === "X"){
@@ -92,7 +93,7 @@ function vencedor(){
       setTimeout(() => {
        mensagem.innerHTML = `${ blocos[a[0]][a[1]]} --- ganhou!\u{1F603} 	\u{1F389}`
        finalizar=true
-        
+      
       
        if(blocos[a[0]][a[1]] === "X")(
          mensagem.style.color="red"
@@ -107,10 +108,3 @@ function vencedor(){
     }
   }
   }
-
-
-
-
-
-
-
