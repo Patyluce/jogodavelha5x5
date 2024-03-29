@@ -19,7 +19,7 @@ listaLi.forEach((li, i) => {
         atualizarBlocos(i, jogador)
         jogador = jogador === "X" ? "O" : "X"
         mudarTamanho()
-       // vencedor()
+       
         jogadas++
          jogador = jogador === "O" ? "O" : "X"
  
@@ -53,7 +53,7 @@ bt.addEventListener("click", function () {
         atualizarBlocos(i, "")
         mensagem.innerHTML = ""
         jogadas = 0
-        finalizar = false // Reseta a variável ao reiniciar o jogo
+        finalizar = false 
     })
 })
 
@@ -75,54 +75,59 @@ function atualizarBlocos(i, valor) {
 function vencedor() {
     // Verificar linhas
     for (let i = 0; i < 5; i++) {
-        if (blocos[i][0] !== '' &&
-            blocos[i][0] === blocos[i][1] &&
-            blocos[i][0] === blocos[i][2] &&
-            blocos[i][0] === blocos[i][3] &&
-            blocos[i][0] === blocos[i][4]) {
-            return   blocos[i][0] // Retorna o símbolo do vencedor
+        for(let j = 0; j<3 ; j++){
+        if (blocos[i][j] !== '' &&
+            blocos[i][j] === blocos[i][j+1] &&
+            blocos[i][j] === blocos[i][j+2]){
+            return   blocos[i][j] // Retorna o símbolo do vencedor
         }
+    }
     }
 
     // Verificar colunas
     for (let j = 0; j < 5; j++) {
-        if (blocos[0][j] !== '' &&
-            blocos[0][j] === blocos[1][j] &&
-            blocos[0][j] === blocos[2][j] &&
-            blocos[0][j] === blocos[3][j] &&
-            blocos[0][j] === blocos[4][j]) {
-            return  blocos[0][j] // Retorna o símbolo do vencedor
+        for(let i = 0; i<3; i++){
+        if (blocos[i][j] !== '' &&
+            blocos[i][j] === blocos[i+1][j] &&
+            blocos[i][j] === blocos[i + 2][j] ) {
+            return  blocos[i][j] 
         }
+    }
     }
 
     // Verificar diagonal principal
-    if (blocos[0][0] !== '' &&
-        blocos[0][0] === blocos[1][1] &&
-        blocos[0][0] === blocos[2][2] &&
-        blocos[0][0] === blocos[3][3] &&
-        blocos[0][0] === blocos[4][4]) {
-        return blocos[0][0] // Retorna o símbolo do vencedor
+    for(let i = 0; i<3; i++){
+    if (blocos[i][i] !== '' &&
+        blocos[i][i] === blocos[i + 1][i + 1] &&
+        blocos[i][i] === blocos[i + 2][i + 2] ) {
+        return blocos[i][i] 
         }
+    }
     // Verificar diagonal secundária
-    if (blocos[0][4] !== '' &&
-        blocos[0][4] === blocos[1][3] &&
-        blocos[0][4] === blocos[2][2] &&
-        blocos[0][4] === blocos[3][1] &&
-        blocos[0][4] === blocos[4][0]) {
-        return blocos[0][4] // Retorna o símbolo do vencedor
+    for(let i = 0; i<3; i++){
+    if (blocos[i][4-i] !== '' &&
+        blocos[i][4-i] === blocos[i+1][3-i] &&
+        blocos[i][4-i] === blocos[i+2][2-i]) {
+        return blocos[i][4-i] 
+    }
     }
 
-    // Se não houver vencedor
-    return '' // Retorna vazio se não houver vencedor
+    return '' 
 }
 
 // Muda o tamanho da fonte do li quando a tela for menor
 function mudarTamanho() {
     listaLi.forEach((li) => {
         if (window.matchMedia("(max-width: 800px)").matches) {
-            li.style.fontSize = "40px"
+            li.style.fontSize = "30px"
+            li.style.display="flex"
+            li.style.justifyContent="center"
+            li.style.alignItems="center"
         } else {
-            li.style.fontSize = "50px"
+            li.style.fontSize = "40px"
+            li.style.display="flex"
+            li.style.justifyContent="center"
+            li.style.alignItems="center"
         }
     })
 }
